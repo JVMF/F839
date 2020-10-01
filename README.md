@@ -3,6 +3,6 @@ Esse repositório engloba os scripts para análise de dados de todos os experime
 
 Os scripts desse repositório foram escritos todos em linguagem R
 
-Download da linguagem em: https://www.r-project.org
-Download da IDE (R Studio) em: https://rstudio.com/products/rstudio/download/
+Download da linguagem em: https://www.r-project.org \
+Download da IDE (R Studio) em: https://rstudio.com/products/rstudio/download/ \
 R Studio também pode ser usado através da plataforma Anaconda, download em: https://www.anaconda.com/pricing
