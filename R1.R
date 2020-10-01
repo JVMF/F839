@@ -1,10 +1,10 @@
-## AN¡LISE DE DADOS DO EXPERIMENTO 1 DE F839-A (2S 2020)
-## Autor: Jo„o Vitor Martins Fernandez
+## AN√ÅLISE DE DADOS DO EXPERIMENTO 1 DE F839-A (2S 2020)
+## Autor: Jo√£o Vitor Martins Fernandez
 ## Objetivo: dado um vetor de entrada de dados, o script cria um 
-## dataframe e utiliza a funÁ„o lm para fazer a regress„o linear.
-## As funÁıes s„o para o plot dos gr·ficos
-## Rodar as linhas 104 e 105 para os resultados da lente divergente
-## Rodar as linhas 114 e 115 para os resultados da lente convergente
+## dataframe e utiliza a fun√ß√£o lm para fazer a regress√£o linear.
+## As fun√ß√µes s√£o para o plot dos gr√°ficos
+## Rodar as linhas 103 e 104 para os resultados da lente divergente
+## Rodar as linhas 113 e 114 para os resultados da lente convergente
 
 ## ----- ENTRADA DE DADOS
 
@@ -13,17 +13,16 @@ Halo <- c(0.091, 0.104, 0.118, 0.131, 0.143, 0.156, 0.168, 0.184, 0.197, 0.21)  
 Distancia0 <- c(1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8)                       # Considerando espessura do celular (1.5 cm = 0.015 m)
 Distancia2 <- c(0.9850, 1.185, 1.385, 1.585, 1.785, 1.985, 2.185, 2.385, 2.585, 2.785)  # Descontando a espessura do celular
 
-# Dist‚ncia flash-lente --> d0 = 1 m 
-# Largura verdical da lente --> a = (0.032 +- 0.04) m ~ armaÁ„o grossa
+# Dist√¢ncia flash-lente --> d0 = 1 m 
+# Largura verdical da lente --> a = (0.032 +- 0.04) m ~ arma√ß√£o grossa
 
 # DADOS LENTE CONVERGENTE [m]
 Sombra <- c(0.059, 0.060, 0.062, 0.064, 0.066, 0.068, 0.071, 0.075 )
 DistanciaZ <- c(0.000, 0.020, 0.035, 0.040, 0.060, 0.085, 0.100, 0.135 )
-DistanciaZ1 <- c(0.000, 0.020, 0.035, 0.040, 0.060, 0.085, 0.100, 0.135 )
 
-# Largura verdical da lente, no centro  --> a = (MEDIR +- 0.04) m ~ armaÁ„o grossa
+# Largura verdical da lente, no centro  --> a = (0.036 +- 0.04) m ~ arma√ß√£o grossa
 
-# CONVERS√O EM DATAFRAME PARA A AN¡LISE
+# CONVERS√ÉO EM DATAFRAME PARA A AN√ÅLISE
 Dados.Conv <- data.frame(DistanciaZ,Sombra)
 Dados.Divg <- data.frame(Distancia2,Halo)
 
@@ -44,7 +43,7 @@ Divg.Lin <- function(dados){
 # LENTE CONVERGENTE
 Conv.Lin <- function(dados){
   
-  conv <- lm(Sombra ~ I(DistanciaZ), 
+  conv <- lm(Sombra ~ I(DistanciaZ1), 
              data = dados,
              weights = (dados$row_std))  # Erro experimental
   
@@ -55,7 +54,7 @@ Conv.Lin <- function(dados){
 
 ## ----- AJUSTE
 
-# CHAMADA DA FUN«√O
+# CHAMADA DA FUN√á√ÉO
 Divg.fit <- Divg.Lin(Dados.Divg)  
 Conv.fit <- Conv.Lin(Dados.Conv)
 
@@ -96,7 +95,7 @@ plot.Conv <- function(dados,ajuste,
   return (gr)
 }
 
-## ----- PLOT DOS GR¡FICOS E RESULTADOS
+## ----- PLOT DOS GR√ÅFICOS E RESULTADOS
 Grafico.Lente.Divg <- plot.Divg(Dados.Divg, Divg.fit)
 Grafico.Lente.Conv <- plot.Conv(Dados.Conv, Conv.fit)
 
@@ -107,14 +106,14 @@ summary(Divg.fit$fit)
 # d0 = 1 m
 # a = (0.032 +- 0.004) m
 # coef. angular: I(Distancia2) = (0.0659 +- 0.0005)
-# PropagaÁ„o de erro: Err.Divg = sqrt((1/0.032)^2 * (0.0005) + (0.0659 * log(0.032, base = exp(1))) * (0.004))
+# Propaga√ß√£o de erro: Err.Divg = sqrt((1/0.032)^2 * (0.0005) + (0.0659 * log(0.032, base = exp(1))) * (0.006)) = 0.69
 # RESULTADO: D = - 1.060606 --> D = - 1.1 +- 0.7 ~ (D = - 1.00)
 
 # LENTE CONVERGENTE  ---> D = (I(DistanciaZ))/a
 Grafico.Lente.Conv
 summary(Conv.fit$fit) 
 
-# a = (0.035 +- 0.004) m
+# a = (0.036 +- 0.004) m
 # coef. angular: I(DistanciaZ) = (0.122 +- 0.006)
-# PropagaÁ„o de erro: Err.Conv = sqrt((1/0.035)^2 * (0.0005) + (0.122 * log(0.035, base = exp(1))) * (0.004))
-# RESULTADO: D = 3.49862 --> D = -3.5 +- 0.6 ~ (D = 3.50)
+# Propaga√ß√£o de erro: Err.Conv = sqrt((1/0.036)^2 * (0.006) + (0.122 * log(0.036, base = exp(1))) * (0.006)) = 2.51
+# RESULTADO: D = 3.388889 --> D = 3 +- 2 ~ (D = 2.5)
