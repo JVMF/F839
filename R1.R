@@ -43,7 +43,7 @@ Divg.Lin <- function(dados){
 # LENTE CONVERGENTE
 Conv.Lin <- function(dados){
   
-  conv <- lm(Sombra ~ I(DistanciaZ1), 
+  conv <- lm(Sombra ~ I(DistanciaZ), 
              data = dados,
              weights = (dados$row_std))  # Erro experimental
   
@@ -106,8 +106,8 @@ summary(Divg.fit$fit)
 # d0 = 1 m
 # a = (0.032 +- 0.004) m
 # coef. angular: I(Distancia2) = (0.0659 +- 0.0005)
-# Propagação de erro: Err.Divg = sqrt((1/0.032)^2 * (0.0005) + (0.0659 * log(0.032, base = exp(1))) * (0.006)) = 0.69
-# RESULTADO: D = - 1.060606 --> D = - 1.1 +- 0.7 ~ (D = - 1.00)
+# Propagação de erro: Err.Divg = sqrt((1/0.032)^2 * (0.0005)^2 + (0.0659 * log(0.032, base = exp(1))) * (0.006)^2) = 0.015
+# RESULTADO: D = - 1.060606 --> D = - 1.06 +- 0.02 ~ (D = - 1.00)
 
 # LENTE CONVERGENTE  ---> D = (I(DistanciaZ))/a
 Grafico.Lente.Conv
@@ -115,5 +115,5 @@ summary(Conv.fit$fit)
 
 # a = (0.036 +- 0.004) m
 # coef. angular: I(DistanciaZ) = (0.122 +- 0.006)
-# Propagação de erro: Err.Conv = sqrt((1/0.036)^2 * (0.006) + (0.122 * log(0.036, base = exp(1))) * (0.006)) = 2.51
-# RESULTADO: D = 3.388889 --> D = 3 +- 2 ~ (D = 2.5)
+# Propagação de erro: Err.Conv = sqrt((1/0.036)^2 * (0.006)^2 + (0.122 * log(0.036, base = exp(1))) * (0.006)^2) = 0.166
+# RESULTADO: D = 3.388889 --> D = 3.4 +- 0.2 ~ (D = 2.5)
