@@ -33,7 +33,7 @@ Dados.Conv <- data.frame(DistanciaZ,Sombra,Erro.Sombra)
 # LENTE DIVERGENTE
 Divg.Lin <- function(dados){
   
-  divg <- lm(Halo ~ I(Distancia2), 
+  divg <- lm(Halo ~ I(Distancia0), 
              data = dados, 
              weights = 1/(Erro.Halo)^2)  # Incerteza
   
@@ -70,9 +70,9 @@ plot.Divg <- function(dados,ajuste,
   
   dados$ajuste <- ajuste$red.pred
   
-  gr <- ggplot(data = dados, aes(x = Distancia2, y = Halo))
-  gr <- gr + geom_point(aes(x = Distancia2, y = Halo), size = 2, shape = 1)
-  gr <- gr + geom_line(aes(x = Distancia2, y = ajuste), colour = "red")
+  gr <- ggplot(data = dados, aes(x = Distancia0, y = Halo))
+  gr <- gr + geom_point(aes(x = Distancia0, y = Halo), size = 2, shape = 1)
+  gr <- gr + geom_line(aes(x = Distancia0, y = ajuste), colour = "red")
   gr <- gr + labs(x = rotuloX, y = rotuloY)
   gr <- gr + theme_gray(base_size = 18)
   gr <- gr + geom_errorbar(aes(ymin = Halo - 0.0005, ymax = Halo + 0.0005), width=.1)
