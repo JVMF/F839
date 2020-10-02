@@ -12,7 +12,7 @@
 Halo <- c(0.091, 0.104, 0.118, 0.131, 0.143, 0.156, 0.168, 0.184, 0.197, 0.21)          # Halo eixo vertical
 Distancia0 <- c(1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8)                       # Considerando espessura do celular (1.5 cm = 0.015 m)
 Distancia2 <- c(0.9850, 1.185, 1.385, 1.585, 1.785, 1.985, 2.185, 2.385, 2.585, 2.785)  # Descontando a espessura do celular
-Erro.Halo <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)
+Erro.Halo <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)   # Erro da régua usada para medir o halo / sombra
 
 # Distância flash-lente --> d0 = 1 m 
 # Largura verdical da lente --> a = (0.032 +- 0.05) m ~ armação grossa
