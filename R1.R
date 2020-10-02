@@ -1,4 +1,4 @@
-## ANÁLISE DE DADOS DO EXPERIMENTO 1 DE F839-A (2S 2020)
+## ## ANÁLISE DE DADOS DO EXPERIMENTO 1 DE F839-A (2S 2020)
 ## Autor: João Vitor Martins Fernandez
 ## Objetivo: dado um vetor de entrada de dados, o script cria um 
 ## dataframe e utiliza a função lm para fazer a regressão linear.
@@ -17,14 +17,14 @@ Distancia2 <- c(0.9850, 1.185, 1.385, 1.585, 1.785, 1.985, 2.185, 2.385, 2.585, 
 # Largura verdical da lente --> a = (0.032 +- 0.04) m ~ armação grossa
 
 # DADOS LENTE CONVERGENTE [m]
-Sombra <- c(0.059, 0.060, 0.062, 0.064, 0.066, 0.068, 0.071, 0.075 )
-DistanciaZ <- c(0.000, 0.020, 0.035, 0.040, 0.060, 0.085, 0.100, 0.135 )
+Sombra <- c(0.060, 0.062, 0.064, 0.066, 0.068, 0.071, 0.075 )
+DistanciaZ <- c(0.020, 0.035, 0.040, 0.060, 0.085, 0.100, 0.135 )
 
 # Largura verdical da lente, no centro  --> a = (0.036 +- 0.04) m ~ armação grossa
 
 # CONVERSÃO EM DATAFRAME PARA A ANÁLISE
-Dados.Conv <- data.frame(DistanciaZ,Sombra)
 Dados.Divg <- data.frame(Distancia2,Halo)
+Dados.Conv <- data.frame(DistanciaZ,Sombra)
 
 ## ----- FUNCOES PARA LINEARIZACAO
 
@@ -106,7 +106,7 @@ summary(Divg.fit$fit)
 # d0 = 1 m
 # a = (0.032 +- 0.004) m
 # coef. angular: I(Distancia2) = (0.0659 +- 0.0005)
-# Propagação de erro: Err.Divg = sqrt((1/0.032)^2 * (0.0005)^2 + (0.0659 * log(0.032, base = exp(1))) * (0.006)^2) = 0.015
+# Propagação de erro: Err.Divg = sqrt((1/0.032)^2 * (0.0005)^2 + (0.0659 * log(0.032, base = exp(1))) * (0.004)^2) = 0.015
 # RESULTADO: D = - 1.060606 --> D = - 1.06 +- 0.02 ~ (D = - 1.00)
 
 # LENTE CONVERGENTE  ---> D = (I(DistanciaZ))/a
@@ -114,6 +114,6 @@ Grafico.Lente.Conv
 summary(Conv.fit$fit) 
 
 # a = (0.036 +- 0.004) m
-# coef. angular: I(DistanciaZ) = (0.122 +- 0.006)
-# Propagação de erro: Err.Conv = sqrt((1/0.036)^2 * (0.006)^2 + (0.122 * log(0.036, base = exp(1))) * (0.006)^2) = 0.166
-# RESULTADO: D = 3.388889 --> D = 3.4 +- 0.2 ~ (D = 2.5)
+# coef. angular: I(DistanciaZ) = (0.127 +- 0.007)
+# Propagação de erro: Err.Conv = sqrt((1/0.036)^2 * (0.007)^2 + (0.127 * log(0.036, base = exp(1))) * (0.004)^2) = 0.194
+# RESULTADO: D = 3.527778 --> D = 3.5 +- 0.2 ~ (D = 2.5)
