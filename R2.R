@@ -1,13 +1,13 @@
-## AN¡LISE DE DADOS DO EXPERIMENTO 2 DE F839-A (2S 2020)
-## Autor: Jo„o Vitor Martins Fernandez
+## AN√ÅLISE DE DADOS DO EXPERIMENTO 2 DE F839-A (2S 2020)
+## Autor: Jo√£o Vitor Martins Fernandez
 ## Objetivo: dado um vetor de entrada de dados, o script cria um 
-## dataframe e utiliza a funÁ„o lm para fazer a regress„o linear.
-## As funÁıes s„o para o plot dos gr·ficos
-## Rodar as linhas 
+## dataframe e utiliza a fun√ß√£o lm para fazer a regress√£o linear.
+## As fun√ß√µes s√£o para o plot dos gr√°ficos
+## Rodar as linhas 70 para o gr√°fico e 71 para o ajuste
 
 ## ----- ENTRADA DE DADOS
 
-# Dist‚ncia entre o objeto e a lente
+# Dist√¢ncia entre o objeto e a lente
 Do <- c(0.16, 0.18, 0.24, 0.305, 0.33, 0.40, 0.47, 0.515, 0.62, 0.655)
 Do.erro <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)
 
@@ -16,13 +16,13 @@ C <- c(0.036, 0.034, 0.025, 0.020, 0.015, 0.014, 0.011, 0.010, 0.009, 0.008)
 C.erro <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)
 
 A = 0.1            # Altura do objeto = 10 cm
-alpha <- 17.6      # Fator de convers„o horizontal 
-M <- C/(A*alpha)   # MagnificaÁ„o
-IM <- (1/M)        # Inverso da MagnificaÁ„o
+alpha <- 17.6      # Fator de convers√£o horizontal 
+M <- C/(A*alpha)   # Magnifica√ß√£o
+IM <- (1/M)        # Inverso da Magnifica√ß√£o
 
 IM.erro <- sqrt((0.0005/0.1)^2 + (mean(C)*0.0005/(0.1)^2)^2)
 
-# CONVERS√O EM DATAFRAME PARA A AN¡LISE
+# CONVERS√ÉO EM DATAFRAME PARA A AN√ÅLISE
 Dados <- data.frame(Do,IM,IM.erro)
 
 ## ----- FUNCOES PARA LINEARIZACAO
@@ -41,7 +41,7 @@ Ajuste.Lin <- function(dados){
 
 ## ----- AJUSTE
 
-# CHAMADA DA FUN«√O
+# CHAMADA DA FUN√á√ÉO
 Smartphone.fit <- Ajuste.Lin(Dados)  
 
 ## ----- FUNCOES PARA PLOTAR OS GRAFICOS
@@ -63,7 +63,7 @@ plot.Smartphone <- function(dados,ajuste,
   return (gr)
 }
 
-## ----- PLOT DOS GR¡FICOS E RESULTADOS
+## ----- PLOT DOS GR√ÅFICOS E RESULTADOS
 Grafico.Smartphone <- plot.Smartphone(Dados,Smartphone.fit)
 
 # Resultados
