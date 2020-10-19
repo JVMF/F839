@@ -1,12 +1,11 @@
 ## ANÁLISE DE DADOS DO EXPERIMENTO 2 DE F839-A (2S 2020)
 ## Autor: João Vitor Martins Fernandez
-## Objetivo: dado um vetor de entrada de dados, o script cria um 
-## dataframe e utiliza a função lm para fazer a regressão linear.
+## Objetivo: dado um vetor de entrada de dados, o script cria um dataframe e utiliza a função lm para fazer a regressão linear.
 ## As funções são para o plot dos gráficos
-## Dados apêndice 1: Rodar linhas 14 até 25;
-## Dados corpo do relatório (lente traseira): Rodar linhas 35 até 41 
-## Dados corpo do relatório (lente frontal): Rodar linhas 46 até 52 
-## Gráfico: Rodar linha 104, Estatísticas: Rodar linha 105
+## Dados apêndice 1: Rodar linhas 15 até 26;
+## Dados corpo do relatório (lente traseira): Rodar linhas 36 até 42;
+## Dados corpo do relatório (lente frontal): Rodar linhas 47 até 53; 
+## Gráfico: Rodar linha 103, Estatísticas: Rodar linha 104;
 
 ## ----- ENTRADA DE DADOS
 
