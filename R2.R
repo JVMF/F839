@@ -3,9 +3,14 @@
 ## Objetivo: dado um vetor de entrada de dados, o script cria um 
 ## dataframe e utiliza a função lm para fazer a regressão linear.
 ## As funções são para o plot dos gráficos
-## Rodar as linhas 70 para o gráfico e 71 para o ajuste
+## Dados apêndice 1: Rodar linhas 14 até 25;
+## Dados corpo do relatório (lente traseira): Rodar linhas 35 até 41 
+## Dados corpo do relatório (lente frontal): Rodar linhas 46 até 52 
+## Gráfico: Rodar linha 104, Estatísticas: Rodar linha 105
 
 ## ----- ENTRADA DE DADOS
+
+### DADOS APÊNDICE 1 <- Apenas lente traseira
 
 # Distância entre o objeto e a lente
 Do <- c(0.16, 0.18, 0.24, 0.305, 0.33, 0.40, 0.47, 0.515, 0.62, 0.655)
@@ -19,8 +24,37 @@ A = 0.1            # Altura do objeto = 10 cm
 alpha <- 17.6      # Fator de conversão horizontal 
 M <- C/(A*alpha)   # Magnificação
 IM <- (1/M)        # Inverso da Magnificação
-
 IM.erro <- sqrt((0.0005/0.1)^2 + (mean(C)*0.0005/(0.1)^2)^2)
+
+### DADOS CORPO DO RELATÓRIO <- Ambas as lentes
+
+## LENTE TRASEIRA
+
+# Distância entre o objeto e a lente
+Do <- c(0.155, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60)
+Do.erro <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)
+
+# Tamanho do objeto na imagem
+C <- c(0.085, 0.065, 0.053, 0.043, 0.037, 0.032, 0.028, 0.025, 0.023, 0.021)
+C.erro <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)
+alpha <- 19.1
+
+## LENTE FRONTAL
+
+# Distância entre o objeto e a lente
+Do <- c(0.132, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60)
+Do.erro <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)
+
+# Tamanho do objeto na imagem
+C <- c(0.065, 0.054, 0.043, 0.031, 0.030, 0.027, 0.024, 0.021, 0.019, 0.018)
+C.erro <- c(0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005)
+alpha <- 25
+
+# Cálculo da Magnificação
+
+A = 0.176          # Altura do objeto fotografado = 17.6 cm
+M <- C/(A*alpha)   # Magnificação
+IM <- (1/M)        # Inverso da Magnificação
 
 # CONVERSÃO EM DATAFRAME PARA A ANÁLISE
 Dados <- data.frame(Do,IM,IM.erro)
@@ -70,7 +104,9 @@ Grafico.Smartphone <- plot.Smartphone(Dados,Smartphone.fit)
 Grafico.Smartphone
 summary(Smartphone.fit$fit) 
 
-# RESULTADO
-# VALOR DO FABRICANTE: f = 28 mm
-# VALOR CALCULADO: f = (29 +- 1) mm
+# RESULTADOS CORPO DO RELATÓRIO
+# TRASEIRA: f = (3.66 +- 0.03) mm <==> fabricante = 3.6 mm
+# FRONTAL: f = (2.51 +- 0.09) mm <===> fabricante = 2.53 mm
 
+# RESULTADOS APÊNDICE 1
+# TRASEIRA: f = (2.9 +- 0.1) mm <==> fabricante = 2.8 mm
